@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Loader from "./components/Loader";
 
@@ -29,6 +29,15 @@ const App = () => {
     <Router>
       <Suspense fallback={<Loader />}>
         <Routes>
+          <Route
+            path="/"
+            element={
+              <Link to={"/admin/dashboard"}>
+                <button>Visit Dashboard</button>
+              </Link>
+            }
+          />
+
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/product" element={<Products />} />
           <Route path="/admin/customer" element={<Customers />} />
